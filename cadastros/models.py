@@ -3,10 +3,25 @@ from django.db import models
 # Create your models here.
 
 
-class Cidade(models.Model):
-    nome = models.CharField(max_length=100)
-    capital = models.BooleanField(default=False)
+class Pais(models.Model):
+    nome = models.CharField(max_length=80, unique=True)
 
     def __str__(self):
         return self.nome
 
+
+class Estado(models.Model):
+    pais = models.ForeignKey(Pais, on_delete=models.PROTECT, null=True, blank=False)
+    nome = models.CharField(max_length=80, unique=True)
+
+    def __str__(self):
+        return self.nome
+
+
+class Cidade(models.Model):
+    estado = models.ForeignKey(Estado, on_delete=models.PROTECT, null=True, blank=False)
+    nome = models.CharField(max_length=100, unique=True)
+    capital = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.nome
