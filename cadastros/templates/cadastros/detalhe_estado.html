@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+
+    <h1>Detalhe do Estado:</h1>
+
+    <p>Nome: {{ estado.nome }}</p>
+    <p>País: {{ estado.pais }}</p>
+
+    <div>
+        <a class="btn btn-danger" href="{% url 'estado-remove' estado.id %}">Apagar Registro</a>
+        <a class="btn btn-primary" href="{% url 'estados-editar' estado.id %}">Atualizar Registro</a>
+    </div>
+
+{% endblock %}

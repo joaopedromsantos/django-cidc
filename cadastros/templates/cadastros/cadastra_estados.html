@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+{{ form.errors }}
+
+    <h1>Novo Estado:</h1>
+
+    <form action="{% url 'estados-cadastro' %}" method="POST">
+
+        {% csrf_token %}
+        <div class="mb-3">
+            <label class="form-label" >Nome do Estado:</label>
+            {{ form.nome }}
+        </div>
+        <div class="mb-3 mt-3">
+            <label class="form-label">País</label>
+            {{ form.pais }}
+        </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+
+    </form>
+
+{% endblock %}

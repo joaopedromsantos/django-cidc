@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+    <h2>Remover Estado</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        <p>Deseja remover o Estado "{{ estado }}?</p>
+        <input type="submit" class="btn btn-danger" value="SIM">
+    </form>
+
+{% endblock %}
