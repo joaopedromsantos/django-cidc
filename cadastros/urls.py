@@ -1,6 +1,7 @@
 from django.urls import include, path
 from django.contrib import admin
 
+from cadastros.apis import CidadeAPI, CidadeAPIList
 from cadastros.views import ListaCidade, CidadeDetail, CidadeDelete, CidadeCreate, CidadeUpdate, ListaEstado, \
     EstadoDetail, EstadoDelete, EstadoUpdate, EstadoCreate
 
@@ -16,4 +17,7 @@ urlpatterns = [
     path('estado/delete/<int:pk>/', EstadoDelete.as_view(), name='estado-remove'),
     path('estado/update/<int:pk>/', EstadoUpdate.as_view(), name='estados-editar'),
     path('estado/create/', EstadoCreate.as_view(), name='estados-cadastro'),
+
+    # Django Rest
+    path('api/cidades', CidadeAPIList.as_view(), name='cidade-api')
 ]

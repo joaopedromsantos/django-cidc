@@ -9,6 +9,7 @@
     <p>Estado: {{ cidade.estado }}</p>
     <p>País: {{ cidade.estado.pais }}</p>
     <p>É capital?: {{ cidade.capital }}</p>
+    <p>Descrição: {{ cidade.descricao }}</p>
 
     <div>
         <a class="btn btn-danger" href="{% url 'cidades-remove' cidade.id %}">Apagar Registro</a>

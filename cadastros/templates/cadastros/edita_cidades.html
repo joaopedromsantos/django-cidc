@@ -10,9 +10,17 @@
 
         {% csrf_token %}
 
+        <div class="mb-3">
+            <label class="form-label" >Estado:</label>
+            {{ form.estado }}
+        </div>
         <div class="mb-3 mt-3">
             <label class="form-label">Nome da Cidade</label>
             {{ form.nome }}
+        </div>
+        <div class="mb-3 mt-3">
+            <label class="form-label">Descrição</label>
+            {{ form.descricao }}
         </div>
         <div class="mb-3">
             {{ form.capital }}

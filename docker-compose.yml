@@ -9,8 +9,28 @@ services:
     volumes:
       - .:/code
     entrypoint: ['sh', 'run-django.sh']
+    depends_on:
+      - db_prod
+    networks:
+      - database
+      - web
 
-  sidia_db:
+
+  proxy:
+    image: nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./etc/nginx:/etc/nginx/confi.d/
+      - ./log/nginx:/var/log/nginx
+      - ./static:/var/www/static
+      - ./media:/var/www/media
+    networks:
+      - web
+
+
+  db_prod:
     image: mdillon/postgis
     environment:
       POSTGRES_PASSWORD: root
@@ -19,10 +39,12 @@ services:
       - "5433:5432"
     volumes:
       - postgres-data-prod:/var/lib/postgresql/data
+    networks:
+      - database
 
-  adminer:
-    image: adminer
-    ports:
-      - "8001:8000"
 volumes:
   postgres-data-prod:
+
+networks:
+  web:
+  database:

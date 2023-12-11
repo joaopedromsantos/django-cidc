@@ -1,0 +1,5 @@
+/static/
+/log/*
+/media/*
+
+!.gitkeep
